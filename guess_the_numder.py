@@ -3,15 +3,13 @@ import random
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.filters import Text, Command
+from config_data.config import load_config
 
-
-# Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
-# полученный у @BotFather
-BOT_TOKEN: str = ''
-
+config = load_config('./.env')
+bot_token: str = config.tg_bot.token    # Сохраняем значение переменной окружения в переменную bot_token
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(BOT_TOKEN)
+bot: Bot = Bot(token=bot_token)
 dp: Dispatcher = Dispatcher()
 
 
