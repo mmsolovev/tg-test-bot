@@ -1,12 +1,14 @@
 from aiogram import Bot, Dispatcher
 from aiogram.filters import Command
 from aiogram.types import Message
+from config_data.config import load_config
 
 
-API_TOKEN: str = ''
+config = load_config('./.env')
+bot_token: str = config.tg_bot.token    # Сохраняем значение переменной окружения в переменную bot_token
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=API_TOKEN)
+bot: Bot = Bot(token=bot_token)
 dp: Dispatcher = Dispatcher()
 
 
