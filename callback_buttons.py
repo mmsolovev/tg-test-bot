@@ -26,7 +26,7 @@ keyboard: InlineKeyboardMarkup = InlineKeyboardMarkup(
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
-# и отправлять в чат клавиатуру с url-кнопками
+# и отправлять в чат клавиатуру с инлайн-кнопками
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
     await message.answer(text='Это инлайн-кнопки. Нажми на любую!',
@@ -41,7 +41,8 @@ async def process_button_1_press(callback: CallbackQuery):
         await callback.message.edit_text(
             text='Была нажата БОЛЬШАЯ КНОПКА 1',
             reply_markup=callback.message.reply_markup)
-    await callback.answer()
+    await callback.answer(text='Ура! Нажата кнопка 1',
+                          show_alert=True)
 
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
@@ -52,7 +53,7 @@ async def process_button_2_press(callback: CallbackQuery):
         await callback.message.edit_text(
             text='Была нажата БОЛЬШАЯ КНОПКА 2',
             reply_markup=callback.message.reply_markup)
-    await callback.answer()
+    await callback.answer(text='Ура! Нажата кнопка 2')
 
 
 if __name__ == '__main__':
